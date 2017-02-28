@@ -20,14 +20,19 @@
  */
 package org.wso2.impl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.wso2.function.Context;
 import org.wso2.function.RequestHandler;
 import org.wso2.function.models.APICreateEvent;
 
 public class LambdaApp implements RequestHandler<APICreateEvent, APICreateEvent> {
 
+    private final static Logger logger = LogManager.getLogger(LambdaApp.class);
+
     public APICreateEvent handleRequest(Context context, APICreateEvent apiCreateEvent) {
-        System.out.println(context.getFunctionName());
+        logger.info("Tenant: {}",context.getTenant() );
+        logger.info("Function Name: {}",context.getFunctionName());
         return apiCreateEvent;
     }
 }
