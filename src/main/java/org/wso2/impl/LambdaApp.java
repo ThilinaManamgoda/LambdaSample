@@ -24,13 +24,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.wso2.function.Context;
 import org.wso2.function.RequestHandler;
-import org.wso2.function.models.APICreateEvent;
+import org.wso2.function.models.API_CREATION;
 
-public class LambdaApp implements RequestHandler<APICreateEvent, APICreateEvent> {
+public class LambdaApp implements RequestHandler<API_CREATION, API_CREATION> {
 
     private final static Logger logger = LogManager.getLogger(LambdaApp.class);
 
-    public APICreateEvent handleRequest(Context context, APICreateEvent apiCreateEvent) {
+    public API_CREATION handleRequest(Context context, API_CREATION apiCreateEvent) {
         logger.info("Tenant: {}",context.getTenant() );
         logger.info("Function Name: {}",context.getFunctionName());
         return apiCreateEvent;
